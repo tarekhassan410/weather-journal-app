@@ -23,18 +23,23 @@ app.use(cors());
 app.use(express.static("website"));
 
 // Setup Server
+// Get weather data
 app.get("/weather", function (req, res) {
   res.send(projectData);
 });
 
+// Post request to add data project data
 app.post("/add", function (req, res) {
   const { feeling, temp, date } = req.body;
   projectData.feeling = feeling;
   projectData.date = date;
   projectData.temp = temp;
+
   console.log("projectData: ", projectData);
+  res.send(projectData);
 });
 
+// Server start
 app.listen("3000", function () {
   console.log("CORS-enabled web server listening on port 3000");
 });
