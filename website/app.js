@@ -20,7 +20,9 @@ let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 
 // Get weather data from Open Weather API
 async function getWeatherData(zipCode) {
-  return await fetch(`${baseURL}?zip=${zipCode},us&appid=${APIKey}`)
+  return await fetch(
+    `${baseURL}?zip=${zipCode},us&appid=${APIKey}&units=metric`
+  )
     .then((response) => {
       return response.json();
     })
